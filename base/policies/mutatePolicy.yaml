@@ -1,0 +1,22 @@
+apiVersion: kyverno.io/v1
+kind: Policy
+metadata:
+  name: add-labels
+spec:
+  rules:
+  - name: add-team
+    match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+          - Deployment
+          - ReplicaSet
+          - Service
+          - Route
+    mutate:
+      patchStrategicMerge:
+        metadata:
+          labels:
+            +(team): bravo
+            +(env): to-change

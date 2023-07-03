@@ -1,0 +1,4 @@
+resources:
+- ./mutatePolicy.yaml
+- ./namespace.yaml
+
